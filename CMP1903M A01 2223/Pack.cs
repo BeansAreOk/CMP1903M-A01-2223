@@ -6,64 +6,73 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    class Pack : Card
+    public class Deck
     {
-        //List<Card> pack;
-        const int NUM_OF_CARDS = 52; //number of all cards 
-        private Card[] deck; //array of all playing cards
-        private Card[] hand;
+        private Card[] deck;
+        private int currentCard;
+        private const int NUMBER_OF_CARDS = 52;
+        //will be used for shuffle 
+        private Random ranNum;
 
-        public Pack()
+        public Deck()
         {
-            deck = new Card[NUM_OF_CARDS];
-        }
+            //gives values and suits that will be put together in the deck
+            string[] values = { "ACE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "JACK", "QUEEN", "KING" };
 
-        public Card[] getDeck { get { return deck; } } //get current deck
+            string[] suits = { "HEARTS", "CLUBS", "DIAMONDS", "SPADES" };
 
-        //create deck of 52 cards: 13 values each, with 4 suits.
-        public void setUpDeck()
-        {
-            int i = 0;
-            foreach (SUIT s in Enum.GetValues(typeof(SUIT)))
+            deck = new Card[NUMBER_OF_CARDS];
+            currentCard = 0;
+            ranNum = new Random();
+            //used to populate the deck
+            for (int count = 0; count < deck.Length; count++)
             {
-                foreach (VALUE v in Enum.GetValues(typeof(VALUE)))
-                {
-                    deck[i] = new Card { MySuit = s, MyValue = v };
-                    i++;
-                }
-            }
-            ShuffleCards();
-        }
-
-        public void ShuffleCards() //dummy code that will shuffle cards
-        {
-            Random rand = new Random();
-            Card temp;
-            for (int shuffleTimes = 0; shuffleTimes < 1000; shuffleTimes++)
-            {
-                for (int i = 0; i < NUM_OF_CARDS; i++)
-                {
-                    //swap the cards 
-                    int secondCardIndex = rand.Next(13);
-                    temp = deck[i];
-                    deck[i] = deck[secondCardIndex];
-                    deck[secondCardIndex] = temp;
-                }
+                //suits and values given to each of the cards
+                deck[count] = new Card(values[count % 13], suits[count / 13]);
             }
         }
 
-        public void Deal(int amount) 
+        public void Shuffle(int typeOfShuffle)
         {
-            hand = new Card[1];
-            hand[1] = getDeck[1]; //will deal a single card
+            switch (typeOfShuffle)
+            {
+                case 1:
+                    //Fisher-Yates Shuffle
+                    //shuffling algorithm where the unshuffled items are selected, then swapped with the last item in collection that hasn't been selected
+                    break;
+                case 2:
+                    //Riffle shuffle
+                    //Most popular way to shuffle and randomise cards, will provide user with an entirely randomised deck of cards if used
+                    currentCard = 0;
+                    for (int first = 0; first < deck.Length; first++)
+                    {
+                        int second = ranNum.Next(NUMBER_OF_CARDS);
+                        Card temp = deck[first];
+                        deck[first] = deck[second];
+                        deck[second] = temp;
+                    }
+                    break;
+                case 3:
+                    //No shuffle
+                    //Pack order doesn't need to be changed
+                    break;
+                default:
+                    Console.WriteLine("Incorrect input for shuffle type.");
+                    break;
+
+            }
         }
 
-        public void DealCards(int amount) 
+        public Card DealCard()
         {
-            hand = new Card[amount];
-            for (int i = 0; i < amount; i++)
+            //prints the cards and makes sure is within the bounds of the deck array, otherwise return nothing.
+            if (currentCard < deck.Length)
             {
-                hand[amount] = getDeck[amount]; //will deal multiple cards
+                return deck[currentCard++];
+            }
+            else
+            {
+                return null;
             }
         }
     }

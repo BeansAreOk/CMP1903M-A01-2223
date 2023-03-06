@@ -7,3 +7,4 @@ C:\Users\harri\Desktop\CMP1903M A01 2223\CMP1903M A01 2223\bin\Debug\CMP1903M A0
 C:\Users\harri\Desktop\CMP1903M A01 2223\CMP1903M A01 2223\bin\Debug\CMP1903M A01 2223.pdb
 C:\Users\harri\Desktop\CMP1903M A01 2223\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.exe
 C:\Users\harri\Desktop\CMP1903M A01 2223\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.pdb
+C:\Users\harri\Desktop\CMP1903M A01 2223\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.csproj.SuggestedBindingRedirects.cache

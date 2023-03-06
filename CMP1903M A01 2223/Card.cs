@@ -6,27 +6,23 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    class Card
+    //will set and output the values for each card given
+    public class Card
     {
-        //Base for the Card class.
-        //Value: numbers 1 - 13
-        //Suit: numbers 1 - 4
-        //The 'set' methods for these properties could have some validation
+        private string value;
+        private string suit;
 
-        public enum VALUE
+        //constructor for value and suit strings
+        public Card(string cardValue, string cardSuit)
         {
-            TWO = 2, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
+            value = cardValue;
+            suit = cardSuit;
         }
 
-        public enum SUIT
+        //outputs values of cards given
+        public override string ToString()
         {
-            HEARTS,
-            SPADES,
-            DIAMONDS,
-            CLUBS
+            return value + " OF " + suit + " ";
         }
-
-        public VALUE MyValue { get; set; }
-        public SUIT MySuit { get; set; }
     }
 }

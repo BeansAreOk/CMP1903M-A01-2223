@@ -6,28 +6,65 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    class Testing
+    public class Testing
     {
-        public void Test()
+        public static void Main()
         {
-            Console.WriteLine("How many cards do you want dealt?");
-            int amount = Convert.ToInt32(Console.ReadLine());
-            if (amount > 52 || amount < 1)
-            {
-                throw new Exception("Please choose an appropriate amount of cards to be dealt (1-52).");
-            } 
+            //Decides what type of shuffle will be used
+            Deck deck1 = new Deck();
 
-            Console.WriteLine("What shuffling method do you want? (1. Fisher-Yates Shuffle 2. Riffle Shuffle 3. No Shuffle");
-            int typeOfShuffle = Convert.ToInt32(Console.ReadLine());
-            if (typeOfShuffle > 3 || typeOfShuffle < 1)
+            try
             {
-                throw new Exception("Please choose an actual shuffling method 1,2 or 3.");
+                Console.WriteLine("What shuffling method do you want? (1. Fisher-Yates Shuffle 2. Riffle Shuffle 3. No Shuffle): ");
+                int typeOfShuffle = Convert.ToInt32(Console.ReadLine());
+                if (typeOfShuffle == 1 || typeOfShuffle == 2 || typeOfShuffle == 3)
+                {
+                    deck1.Shuffle(typeOfShuffle);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter an appropriate integer value for the shuffle type.");
+                    Testing.Main();
+                }
             }
+            catch
+            {
+                Console.WriteLine("Please enter an appropriate integer value for the shuffle type.");
+                Testing.Main();
+            }
+            printCards();
+        }
 
-            Pack pack;
+        public static void printCards()
+        {
+            //Decides how many cards are printed
+            Deck deck1 = new Deck();
 
+            try
+            {
+                Console.WriteLine("How many cards would you like to receive? (1-52): ");
+                int cards = Convert.ToInt32(Console.ReadLine());
+
+                if (cards <= 1 || cards <= 52)
+                {
+                    for (int amount = 0; amount < cards; amount++)
+                    {
+                        Console.Write(deck1.DealCard());
+                        Console.WriteLine();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Please enter an appropriate integer for these cards");
+                    printCards();
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Please enter an appropriate integer for these cards");
+                printCards();
+            }
             Console.ReadLine();
-
         }
     }
 }
