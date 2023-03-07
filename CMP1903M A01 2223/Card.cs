@@ -6,13 +6,23 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    class Card
+    //will set and output the values for each card given
+    public class Card
     {
-        //Base for the Card class.
-        //Value: numbers 1 - 13
-        //Suit: numbers 1 - 4
-        //The 'set' methods for these properties could have some validation
-        public int Value { get; set; }
-        public int Suit { get; set; }
+        private string value;
+        private string suit;
+
+        //constructor for value and suit strings
+        public Card(string cardValue, string cardSuit)
+        {
+            value = cardValue;
+            suit = cardSuit;
+        }
+
+        //outputs values of cards given
+        public override string ToString()
+        {
+            return value + " OF " + suit + " ";
+        }
     }
 }
