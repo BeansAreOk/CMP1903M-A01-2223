@@ -19,7 +19,7 @@ namespace CMP1903M_A01_2223
                 int typeOfShuffle = Convert.ToInt32(Console.ReadLine());
                 if (typeOfShuffle == 1 || typeOfShuffle == 2 || typeOfShuffle == 3)
                 {
-                    deck1.Shuffle(typeOfShuffle);
+                    deck1.shuffleCardPack(typeOfShuffle);
                 }
                 else
                 {
@@ -32,14 +32,7 @@ namespace CMP1903M_A01_2223
                 Console.WriteLine("Please enter an appropriate integer value for the shuffle type.");
                 Testing.Main();
             }
-            printCards();
-        }
-
-        public static void printCards()
-        {
             //Decides how many cards are printed
-            Deck deck1 = new Deck();
-
             try
             {
                 Console.WriteLine("How many cards would you like to receive? (1-52): ");
@@ -55,14 +48,15 @@ namespace CMP1903M_A01_2223
                 }
                 else
                 {
-                    Console.WriteLine("Please enter an appropriate integer for these cards");
-                    printCards();
+                    Console.WriteLine("Please enter an appropriate integer for these cards. Returning to start.");
+                    Testing.Main();
+
                 }
             }
             catch
             {
-                Console.WriteLine("Please enter an appropriate integer for these cards");
-                printCards();
+                Console.WriteLine("Please enter an appropriate integer for these cards. Returning to start.");
+                Testing.Main();
             }
             Console.ReadLine();
         }

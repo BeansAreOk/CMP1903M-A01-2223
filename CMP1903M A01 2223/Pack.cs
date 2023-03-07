@@ -32,13 +32,21 @@ namespace CMP1903M_A01_2223
             }
         }
 
-        public void Shuffle(int typeOfShuffle)
+        public void shuffleCardPack(int typeOfShuffle)
         {
             switch (typeOfShuffle)
             {
                 case 1:
                     //Fisher-Yates Shuffle
                     //shuffling algorithm where the unshuffled items are selected, then swapped with the last item in collection that hasn't been selected
+                    currentCard = 0;
+                    for (int first = 0; first < (deck.Length - 1); first++)
+                    {
+                        int second = first + ranNum.Next(deck.Length - first);
+                        Card temp = deck[second];
+                        deck[second] = deck[first];
+                        deck[first] = temp;
+                    }
                     break;
                 case 2:
                     //Riffle shuffle
@@ -57,6 +65,7 @@ namespace CMP1903M_A01_2223
                     //Pack order doesn't need to be changed
                     break;
                 default:
+                    //Error handling
                     Console.WriteLine("Incorrect input for shuffle type.");
                     break;
 
