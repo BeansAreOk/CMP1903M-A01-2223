@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    internal class Program
+    class Program
     {
+        static void Main(string[] args)
+        {
+            Testing test = new Testing();
+
+            test.Main();
+        }
     }
 }

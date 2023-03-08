@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    public class Deck
+    public class Pack
     {
         private Card[] deck;
         private int currentCard;
@@ -14,9 +14,10 @@ namespace CMP1903M_A01_2223
         //will be used for shuffle 
         private Random ranNum;
 
-        public Deck()
+        public Pack()
         {
             //gives values and suits that will be put together in the deck
+
             string[] values = { "ACE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "JACK", "QUEEN", "KING" };
 
             string[] suits = { "HEARTS", "CLUBS", "DIAMONDS", "SPADES" };
@@ -32,7 +33,7 @@ namespace CMP1903M_A01_2223
             }
         }
 
-        public void shuffleCardPack(int typeOfShuffle)
+        public bool shuffleCardPack(int typeOfShuffle)
         {
             switch (typeOfShuffle)
             {
@@ -47,7 +48,7 @@ namespace CMP1903M_A01_2223
                         deck[second] = deck[first];
                         deck[first] = temp;
                     }
-                    break;
+                    return true;
                 case 2:
                     //Riffle shuffle
                     //Most popular way to shuffle and randomise cards, will provide user with an entirely randomised deck of cards if used
@@ -59,26 +60,33 @@ namespace CMP1903M_A01_2223
                         deck[first] = deck[second];
                         deck[second] = temp;
                     }
-                    break;
+                    return true;
                 case 3:
                     //No shuffle
                     //Pack order doesn't need to be changed
-                    break;
+                    return false;
                 default:
                     //Error handling
                     Console.WriteLine("Incorrect input for shuffle type.");
-                    break;
+                    return false;
 
+            }
+        }
+
+        public Card Deal()
+        {
+            //prints a single card and makes sure its within the bounds of the deck array, otherwise return nothing.
+            if (currentCard < deck.Length) return deck[currentCard];
+            else
+            {
+                return null;
             }
         }
 
         public Card DealCard()
         {
-            //prints the cards and makes sure is within the bounds of the deck array, otherwise return nothing.
-            if (currentCard < deck.Length)
-            {
-                return deck[currentCard++];
-            }
+            //prints the cards and makes sure its within the bounds of the deck array, otherwise return nothing.
+            if (currentCard < deck.Length) return deck[currentCard++];
             else
             {
                 return null;
