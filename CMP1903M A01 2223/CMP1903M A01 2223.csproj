@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CMP1903M_A01_2223.Testing</StartupObject>
+    <StartupObject>CMP1903M_A01_2223.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Card.cs" />
-    <Compile Include="DealCards.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Testing.cs" />
     <Compile Include="Pack.cs" />
