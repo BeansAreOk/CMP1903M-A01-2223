@@ -19,7 +19,7 @@ namespace CMP1903M_A01_2223
             suit = cardSuit;
         }
 
-        //outputs values of cards given
+        //additional method which outputs values of cards given
         public override string ToString()
         {
             return value + " OF " + suit + " ";
